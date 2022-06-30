@@ -1,6 +1,6 @@
 const express = require('express')
 const books = express.Router()
-const Book = require('../models/book.js')
+const Book = require('../models/Book.js')
 
 books.get('/seed', (req, res) => {
     Book.insertMany([{
@@ -53,7 +53,7 @@ books.get('/', (req, res) => {
 // POST (NEW):
 books.post('/', (req, res) => {
     Book.create(req.body)
-    res.json('Book Created')
+        res.json('Book Created')
 })
 
 // PATCH/PUT (UPDATE/EDIT):
@@ -70,12 +70,12 @@ books.put('/:id', (req, res) => {
 
 // SHOW:
 books.get('/:id', (req, res) => {
-    Book.findOne(req.params.id)
+    Book.findById(req.params.id)
         .then(foundBook => {
             res.json(foundBook)
         })
         .catch(err => {
-            res.json('error404', err)
+            res.json('404', err)
         })
 })
 
