@@ -81,7 +81,8 @@ books.get('/:id', (req, res) => {
 
 // DELETE:
 books.delete('/:id', (req, res) => {
-    Book.findOneAndDelete(req.params.id)
+    console.log(req.params.id)
+    Book.findByIdAndDelete(req.params.id)
         res.json('Delete Successful')
 })
 
